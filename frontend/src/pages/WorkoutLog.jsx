@@ -1,8 +1,10 @@
-function WorkoutLog() {
+import WorkoutForm from "../components/WorkoutForm"
+
+function WorkoutLog({ addWorkout }) {
     return (
         <div>
-            <h1>Workout Log</h1>
-        </div>
+       <WorkoutForm addWorkout={addWorkout} />
+       </div>
     )
 }
 
