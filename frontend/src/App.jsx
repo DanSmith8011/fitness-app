@@ -9,7 +9,7 @@ import { useState } from 'react'
 
 function App() {
 
-const [WorkoutList, setWorkoutList] = useState([])
+const [workoutList, setWorkoutList] = useState([])
 
   function addWorkout(workout){
     setWorkoutList([...workoutList, workout])

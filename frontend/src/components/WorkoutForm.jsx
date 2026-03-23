@@ -9,7 +9,8 @@ function WorkoutForm( {addWorkout} ) {
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
     
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault()
     const newWorkout = {
 
         weight: weight,
@@ -19,6 +20,12 @@ function WorkoutForm( {addWorkout} ) {
         title: title
     }
 addWorkout(newWorkout)   
+        setTitle('')
+        setExercise('')
+        setWeight(0)
+        setSet(0)
+        setDate('')
+
     }
     return (
     <form onSubmit={handleSubmit}>
