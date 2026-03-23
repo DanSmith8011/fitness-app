@@ -20,7 +20,7 @@ const [workoutList, setWorkoutList] = useState([])
     <Navbar />
     <Routes>
   <Route path="/profile" element={<Profile />} />
-  <Route path="/workouthistory" element={<WorkoutHistory />} />
+  <Route path="/workouthistory" element={<WorkoutHistory workoutList={workoutList} />} />
   <Route path="/"  element={<WorkoutLog addWorkout={addWorkout} />} />
   </Routes>
   </BrowserRouter>
