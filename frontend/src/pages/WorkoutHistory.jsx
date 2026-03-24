@@ -1,4 +1,4 @@
-
+import WorkoutCard from "../components/WorkoutCard"
 
 function WorkoutHistory({workoutList}) {
     return (
@@ -6,13 +6,9 @@ function WorkoutHistory({workoutList}) {
             <h1>Workout History</h1>
             
             {workoutList.map((workout, index) => (
+    
                 <div key={index}>
-                    {workout.title}
-                    {workout.exercise}
-                    {workout.weight}
-                    {workout.set}
-                    {workout.date}
-
+                    <WorkoutCard workout={workout}/>
                 </div>
             ))}
         </div>
