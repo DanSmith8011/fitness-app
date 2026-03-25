@@ -10,6 +10,14 @@ import { useState } from 'react'
 function App() {
 
 const [workoutList, setWorkoutList] = useState([])
+const [profile, setProfile] = useState({
+  name: '',
+  age: 0,
+  weight: 0,
+  height: 0,
+  email:''
+
+})
 
   function addWorkout(workout){
     setWorkoutList([...workoutList, workout])
@@ -19,7 +27,7 @@ const [workoutList, setWorkoutList] = useState([])
     <BrowserRouter>
     <Navbar />
     <Routes>
-  <Route path="/profile" element={<Profile />} />
+  <Route path="/profile" element={<Profile profile={profile}/>} />
   <Route path="/workouthistory" element={<WorkoutHistory workoutList={workoutList} />} />
   <Route path="/"  element={<WorkoutLog addWorkout={addWorkout} />} />
   </Routes>
