@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      * {
+        box-sizing: border-box;
+    }
+
+    article {
+        padding: 16px;
+        flex: 1;
+        border: 1px solid black;
+    }
+
+    nav {
+        display: flex;
+        gap: 16px;
+    }
+/* base — mobile */
+.workout-logs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 600px and wider — desktop */
+@media (min-width: 600px) {
+    .workout-logs {
+        flex-direction: row;
+    }
+}
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+@media (min-width: 600px) {
+    .layout {
+        grid-template-columns: 1fr 3fr;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+<header>  
+    <nav>
+
+        <a href="#">Home</a>
+        <a href="#">Workouts</a>
+        
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+    </section>
+    <div class="layout">
+        <aside>
+            <p>Sidebar</p>
+        </aside>
+
+    <section>
+            <form> 
+                <label>
+                    Workout Name: 
+                    <input name="workout-name" id="workout-name" placeholder="Workout Name"/>
+                </label>
+
+                <label>
+                    Duration:
+                    <input name="workout-duration" id="workout-duration" placeholder="Workout Duration"/>
+                </label>
+
+                <label>
+                    <select id="workout-type" placeholder="Select Type">
+                        <option value="">Select type</option>
+                        <option value='Strength Training'>Strength</option>
+                        <option value='Cardio Training'>Cardio</option>
+                    </select>
+                </label>
+                <button id="add-workout">Add Workout</button>
+            </form>
+            
+    </section>
+
+    <section class="workout-logs"></section>
+    <button id='clear-workouts'>Clear Workouts</button>
+</div>
+</main>
+
+<footer>
+
+</footer>
+<script>
+</script>
+</body>
+</html>
+
