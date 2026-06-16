@@ -100,6 +100,38 @@
 
 </footer>
 <script>
+    const workouts = []
+    const workoutName = document.getElementById('workout-name')
+    const workoutDuration = document.getElementById('workout-duration')
+    const workoutType = document.getElementById('workout-type')
+    const addWorkoutButton = document.getElementById('add-workout')
+    const workoutLogs = document.querySelector('.workout-logs')
+
+    addWorkoutButton.addEventListener('click', function (e) {
+        e.preventDefault()
+        const newWorkout = {
+            name: workoutName.value,
+            duration: workoutDuration.value,
+            type: workoutType.value
+        }
+        workouts.push(newWorkout)
+        renderWorkouts()
+        console.log(workouts)
+    })
+    function renderWorkouts() {
+        workoutLogs.innerHTML=''
+        workouts.forEach(workout => {
+        const card = document.createElement('article')
+        card.innerHTML = `
+        <h2>${workout.name}</h2>
+        <p>${workout.duration} mins</p>
+        <p>${workout.type}</p>
+        `
+        workoutLogs.appendChild(card)
+        
+        })
+    }
+
 </script>
 </body>
 </html>
