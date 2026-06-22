@@ -86,9 +86,19 @@
                         <option value='Cardio Training'>Cardio</option>
                     </select>
                 </label>
-                <button id="add-workout">Add Workout</button>
+                <button type="button" id="add-workout">Add Workout</button>
             </form>
             
+    </section>
+
+    <section class="filter-section">
+        <select id="filter-type" placehgolder="Select Type">
+            <option value="">Select Type</option>
+            <option value="all">All</option>
+            <option value="Strength Training">Strength</option>
+            <option value="Cardio Training">Cardio</option>
+        </select>
+        <button id="filter-button">Filter</button>
     </section>
 
     <section class="workout-logs"></section>
@@ -106,8 +116,11 @@
     const workoutType = document.getElementById('workout-type')
     const addWorkoutButton = document.getElementById('add-workout')
     const workoutLogs = document.querySelector('.workout-logs')
+    const filterButton = document.getElementById('filter-button')
+    const filterType = document.getElementById('filter-type')
 
     addWorkoutButton.addEventListener('click', function (e) {
+        console.log('button clicked')
         e.preventDefault()
         const newWorkout = {
             name: workoutName.value,
@@ -115,12 +128,25 @@
             type: workoutType.value
         }
         workouts.push(newWorkout)
-        renderWorkouts()
+        renderWorkouts(workouts)
         console.log(workouts)
+        console.log('Hello')
     })
-    function renderWorkouts() {
+
+    filterButton.addEventListener('click', function (e){
+    const typeOfFilter = filterType.value
+
+    if (typeOfFilter === 'all') {
+        renderWorkouts(workouts)
+    } else {
+    const filteredWorkout = workouts.filter(workout => workout.type === typeOfFilter )
+    renderWorkouts(filteredWorkout)
+    }
+})
+
+    function renderWorkouts(arr) {
         workoutLogs.innerHTML=''
-        workouts.forEach(workout => {
+        arr.forEach(workout => {
         const card = document.createElement('article')
         card.innerHTML = `
         <h2>${workout.name}</h2>
