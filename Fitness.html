@@ -122,6 +122,8 @@
 
     addWorkoutButton.addEventListener('click', function (e) {
         e.preventDefault()
+        if (workoutName.value && workoutDuration.value && workoutType.value) {
+
         const newWorkout = {
             name: workoutName.value,
             duration: Number(workoutDuration.value),
@@ -132,7 +134,11 @@
         
         const totalDuration = workouts.reduce((acc, workout) => acc + workout.duration, 0)
         totalWorkoutTime.textContent = totalDuration
-    })
+    } else {
+        alert('Please fill in all fields')
+    }
+
+})
 
     filterButton.addEventListener('click', function (e){
         const selectedType = filterType.value
