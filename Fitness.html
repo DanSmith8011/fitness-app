@@ -88,7 +88,7 @@
                 </label>
                 <button type="button" id="add-workout">Add Workout</button>
             </form>
-            
+            <p id="total-time">Total Duration</p>
     </section>
 
     <section class="filter-section">
@@ -118,31 +118,32 @@
     const workoutLogs = document.querySelector('.workout-logs')
     const filterButton = document.getElementById('filter-button')
     const filterType = document.getElementById('filter-type')
+    const totalWorkoutTime = document.getElementById('total-time')
 
     addWorkoutButton.addEventListener('click', function (e) {
-        console.log('button clicked')
         e.preventDefault()
         const newWorkout = {
             name: workoutName.value,
-            duration: workoutDuration.value,
+            duration: Number(workoutDuration.value),
             type: workoutType.value
         }
         workouts.push(newWorkout)
         renderWorkouts(workouts)
-        console.log(workouts)
-        console.log('Hello')
+        
+        const totalDuration = workouts.reduce((acc, workout) => acc + workout.duration, 0)
+        totalWorkoutTime.textContent = totalDuration
     })
 
     filterButton.addEventListener('click', function (e){
-    const typeOfFilter = filterType.value
+        const selectedType = filterType.value
 
-    if (typeOfFilter === 'all') {
-        renderWorkouts(workouts)
-    } else {
-    const filteredWorkout = workouts.filter(workout => workout.type === typeOfFilter )
-    renderWorkouts(filteredWorkout)
-    }
-})
+        if (selectedType === 'all') {
+            renderWorkouts(workouts)
+        } else {
+            const filteredWorkout = workouts.filter(workout => workout.type === selectedType )
+            renderWorkouts(filteredWorkout)
+        }
+    })
 
     function renderWorkouts(arr) {
         workoutLogs.innerHTML=''
